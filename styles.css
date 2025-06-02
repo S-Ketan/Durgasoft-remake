@@ -1,0 +1,586 @@
+/*
+--color-primary-indigo: Professional and modern.
+--primary-blue: A contrasting shade of blue to make the navigation and footer stand out.
+--color-accent-sky: To add a vibrant touch to buttons and highlights.
+--light-gray: A soft, neutral background or secondary element color.
+--off-white: A clean, near-white background for cards and slides.
+--color-bg-light: A light background for the main content area.
+--color-surface-card: White color for Course cards.
+--color-text-base: Primary color for headings and important text.
+--color-text-subtle: A subtle gray for secondary text.
+--color-highlight-green:It suits well with shades of blue to showcase Today's courses.
+--color-highlight-red: Color used for the close button in the carousel.
+*/
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --light-gray: #e5e7eb;
+  --primary-blue: #1c48a7;
+  --off-white: #f9fafb;
+  --color-primary-indigo: #4f46e5;
+  --color-accent-sky: #0ea5e9;
+  --color-bg-light: #f8fafc;
+  --color-surface-card: #ffffff;
+  --color-text-base: #1f2937;
+  --color-text-subtle: #6b7280;
+  --color-highlight-green: #22c55e;
+  --color-highlight-red: #c52222;
+}
+
+body {
+  background-color: var(--color-bg-light);
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent-sky);
+}
+
+main {
+  width: 78vw;
+  margin-left: 0;
+  margin-right: auto;
+  padding: 20px;
+}
+.navbar {
+  display: flex;
+  background-color: var(--primary-blue);
+  height: 5vh;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  height: 19.5vh;
+}
+.brand {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: white; */
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary-indigo),
+    var(--color-accent-sky)
+  );
+}
+.logo-text {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: "Roboto", Arial, sans-serif;
+}
+.slogan-text {
+  color: #cbd5e1;
+  font-size: 20px;
+  margin-top: 5px;
+  font-weight: 300;
+  font-style: italic;
+  translate: -75px;
+  font-family: "Roboto", Arial, sans-serif;
+}
+.nav-links {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  color: white;
+  list-style: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+}
+
+.special-offer-carousel {
+  position: fixed;
+  top: 210px;
+  right: 20px;
+  width: 300px;
+  background-color: var(--light-gray);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", Arial, sans-serif;
+}
+.close-btn {
+  color: var(--color-bg-light);
+  background-color: var(--color-highlight-red);
+  display: none;
+}
+
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--off-white);
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.slide-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--primary-blue);
+}
+
+.slide-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.slide-content h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--primary-blue);
+}
+
+.slide-content p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: var(--dark-gray);
+}
+
+.slide-content .enroll-btn {
+  background: linear-gradient(
+    45deg,
+    var(--color-accent-sky),
+    var(--color-primary-indigo)
+  );
+  color: var(--off-white);
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.slide-content .enroll-btn:hover {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary-indigo),
+    var(--color-accent-sky)
+  );
+}
+
+/* Navigation dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--light-gray);
+  border: 2px solid var(--primary-blue);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--color-accent-sky);
+}
+
+footer {
+  background-color: var(--primary-blue);
+  color: #f9fafb;
+  padding: 40px 20px;
+  bottom: 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 30px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.footer-section {
+  flex: 1 1 300px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+}
+.favourite-courses {
+  font-size: 2.2rem;
+  color: var(--color-text-base);
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.view-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 30px;
+  background: linear-gradient(
+    45deg,
+    var(--color-accent-sky),
+    var(--color-primary-indigo)
+  );
+  color: var(--off-white);
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.view-more-btn:hover {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary-indigo),
+    var(--color-accent-sky)
+  );
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+/* Container holding the course cards */
+#coursesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.footer-section p,
+.footer-section a {
+  color: var(--off-white);
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 1.6;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+}
+
+.footer-section a:hover {
+  color: var(--color-accent-sky);
+}
+
+.social-icons a {
+  margin-right: 15px;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--color-accent-sky);
+}
+
+@media (max-width: 768px) {
+  .special-offer-carousel {
+    /* position: static; Stack below content on smaller screens */
+    width: 100%;
+    max-width: 250px;
+    /* margin: 20px auto; */
+  }
+  main {
+    width: 100vw;
+  }
+  .carousel-slides {
+    height: 350px;
+  }
+  .logo {
+    height: 100%;
+    width: 200px;
+  }
+  .slide-image {
+    height: 120px;
+  }
+  .header {
+    height: 10vh;
+  }
+  .logo-text {
+    font-size: 20px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  .slogan-text {
+    font-size: 15px;
+    translate: 0px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 300;
+  }
+  .navbar {
+    height: 3vh;
+  }
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  .course-card {
+    max-width: 100%;
+  }
+  .course-image {
+    height: 120px;
+  }
+  .favourite-courses {
+    font-size: 1.8rem;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+  }
+  .view-more-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+  .close-btn {
+    display: block;
+  }
+  .footer-section {
+    margin: 10px 0;
+  }
+}
+@media (max-width: 480px) {
+  .special-offer-carousel {
+    /*  position: static; Stack below content on smaller screens */
+    width: 60%;
+    max-width: 250px;
+    /* margin: 20px auto; */
+    margin: 0px;
+  }
+  main {
+    width: 100vw;
+  }
+  .close-btn {
+    display: block;
+  }
+  .carousel-slides {
+    height: 300px;
+  }
+  .logo {
+    height: 100%;
+    width: 150px;
+  }
+  .slide-content h3 {
+    font-size: 1.3rem;
+  }
+  .slide-content p {
+    font-size: 0.9rem;
+  }
+  .favourite-courses {
+    font-size: 1.5rem;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+  }
+  .view-more-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+  .header {
+    height: 10vh;
+  }
+  .logo-text {
+    font-size: 20px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  .slogan-text {
+    font-size: 7px;
+    translate: 0px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 300;
+  }
+  .navbar {
+    height: 2vh;
+  }
+  .course-card {
+    border-radius: 8px;
+  }
+  .course-content h3 {
+    font-size: 1.4rem;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 700;
+  }
+  .course-content p {
+    font-size: 0.9rem;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
+  }
+  .nav-links {
+    font-size: 10px;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+}
+.dropdown-content a:hover {
+  background-color: var(--color-accent-sky);
+  color: #f9fafb;
+}
+.dropdown.show .dropdown-content {
+  display: block;
+}
+
+/* Card container */
+.course-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-accent-sky);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 300px;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Image, content, button */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Highlight for courses starting today */
+.course-card.today {
+  border: 2px solid var(--color-highlight-green);
+  position: relative; /* For badge positioning */
+}
+
+.course-card.today::before {
+  content: "Starting Today";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--color-highlight-green);
+  color: var(--off-white);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.course-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover .course-image {
+  transform: scale(1.05);
+}
+
+.course-content {
+  padding: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.course-content h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--color-text-base);
+  font-family: "Arial", sans-serif;
+}
+
+.course-content p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  font-family: "Arial", sans-serif;
+}
+
+.course-content .label {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  color: var(--color-text-base);
+}
+
+.enroll-btn {
+  background: linear-gradient(
+    45deg,
+    var(--color-accent-sky),
+    var(--color-primary-indigo)
+  );
+  color: var(--off-white);
+  padding: 12px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  margin: 0 20px 20px;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+.enroll-btn:hover {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary-indigo),
+    var(--color-accent-sky)
+  );
+}
